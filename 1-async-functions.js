@@ -3,7 +3,6 @@ const promiseTimeout = (val, delay = 1000) =>
     setTimeout(() => {
       resolve(val);
     }, delay);
-
   });
 
 const main = async () => {
@@ -27,4 +26,3 @@ const interuption = async () => {
 
 main();
 interuption();
-
