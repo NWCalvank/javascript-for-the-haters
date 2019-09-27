@@ -18,12 +18,12 @@ const myCollection = {
     console.log('blah!!');
   },
   // Instance methods
-  of: function(...values) {
+  of(...values) {
     const newInstance = Object.create(this);
     newInstance.values = values;
     return newInstance;
   },
-  map: function(fn) {
+  map(fn) {
     const newValues = this.values.map(fn);
     return this.of(...newValues);
   },

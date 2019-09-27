@@ -1,4 +1,4 @@
-(function() {
+(() => {
   this.location = 'Victoria';
 
   setTimeout(() => {

@@ -1,4 +1,4 @@
-const promiseTimeout = (val, delay = 1000) =>
+const promiseTimeout = (val, delay) =>
   new Promise(resolve => {
     setTimeout(() => {
       resolve(val);
@@ -6,12 +6,13 @@ const promiseTimeout = (val, delay = 1000) =>
   });
 
 const handleError = err => {
-  console.error(err);
+  console.error('An error occurred...');
+  console.error(new Error(err));
 };
 
-const promiseChain = x =>
-  promiseTimeout(x)
-    .then(x => [null, x])
+const promiseChain = (x, delay = 1000) =>
+  promiseTimeout(x, delay)
+    .then(y => [null, y])
     .catch(err => [err, null]);
 
 const main = async () => {
@@ -37,7 +38,12 @@ const main = async () => {
 };
 
 const interuption = async () => {
-  const result = await promiseTimeout('Interupting!', 1250);
+  const [err, result] = await promiseChain('Interupting!', 1250);
+  if (err) {
+    handleError(err);
+    return;
+  }
+
   console.log(result);
 };
 
