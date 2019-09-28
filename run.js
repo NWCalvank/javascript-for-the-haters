@@ -4,10 +4,11 @@ const {curry, Z} = require('./util');
 // console.log(nums);
 
 // Parametric Polymorphism
-const plus = (a, b) => a + b;
+const swap = ([a, b]) => [b, a];
 
-// console.log(plus(2, 3));
-// console.log(plus('Nat', 'han'));
+// console.log(swap([2, 4]));
+// console.log(swap(['Slam', 'Startup']));
+// console.log(swap([2, 'Startup']));
 
 // Custom Data types
 const myCollection = {
@@ -64,7 +65,7 @@ me.favAnimal = 'Penguin';
 // console.log(me.species);
 
 // Copy of all own properties and break prototype chain
-const meCopy = Object.assign({}, me);
+const meCopy = {...me};
 // meCopy has no species on the prototype chain
 // console.log(meCopy);
 // console.log(meCopy.species);
@@ -78,7 +79,10 @@ const sum = ([x = 0, y = 0, ...rest] = []) =>
 // console.log(sum());
 
 // Reduce to abstract away the recursion
-// console.log(nums.reduce((x, y) => x + y, 0));
+const plus = (a, b) => a + b;
+const strings = ['Start', 'up', ' ', 'Slam', ' ', '2019'];
+// console.log(nums.reduce(plus, 0));
+// console.log(strings.reduce(plus, ''));
 
 // Reduce for simple composition
 const compose = (...funcs) => x => funcs.reduceRight((val, f) => f(val), x);
